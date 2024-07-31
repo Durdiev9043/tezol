@@ -88,52 +88,52 @@
 
                         <div class="card-body">
                             <h5 class="card-title">Recent Sales <span>| Today</span></h5>
-                            <form action="{{ route('product.filter') }}" method="post" accept-charset="UTF-8" enctype="multipart/form-data" style="display: inline;">
-                                @csrf
-                                <input type="text" placeholder="Shtrix kod:" class="mb-3" name="code">
-                            </form>
-                            <form action="{{ route('name.search') }}" method="post" accept-charset="UTF-8" enctype="multipart/form-data" style="display: inline;">
-                                @csrf
-                                <input type="text" placeholder="nomi:" class="mb-3" @if(isset($name))value="{{$name}}"@endif name="name">
-                            </form>
-                            <form action="{{ route('id.search') }}" method="post" accept-charset="UTF-8" enctype="multipart/form-data" style="display: inline;">
-                                @csrf
-                                <input type="text" placeholder="#id:" class="mb-3" @if(isset($id))value="{{$id}}"@endif name="id">
-                            </form>
-                            <form action="{{ route('id.cat') }}" method="post" accept-charset="UTF-8" enctype="multipart/form-data" style="display: inline;">
-                                @csrf
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Mahsulot toifasini tanlang tanlang</label>
-                                <select class="form-control form-control-sm" id="cat_id" onchange="catfilter(cat_id)"  name="cat_id">
-@if(isset($cat)) <option value="{{$cat->id}}">{{ $cat->name }}</option>@else<option value=""></option> @endif
-                                    @foreach($cats as $item)
-                                        @if(isset($cat))
-                                        @if($cat->id != $item->id)
-                                        <option value="{{$item->id}}">{{ $item->name }}</option>
-                                      @endif
-        @else
-            <option value="{{$item->id}}">{{ $item->name }}</option>
-        @endif
-                                    @endforeach
-                                </select>
+{{--                            <form action="{{ route('product.filter') }}" method="post" accept-charset="UTF-8" enctype="multipart/form-data" style="display: inline;">--}}
+{{--                                @csrf--}}
+{{--                                <input type="text" placeholder="Shtrix kod:" class="mb-3" name="code">--}}
+{{--                            </form>--}}
+{{--                            <form action="{{ route('name.search') }}" method="post" accept-charset="UTF-8" enctype="multipart/form-data" style="display: inline;">--}}
+{{--                                @csrf--}}
+{{--                                <input type="text" placeholder="nomi:" class="mb-3" @if(isset($name))value="{{$name}}"@endif name="name">--}}
+{{--                            </form>--}}
+{{--                            <form action="{{ route('id.search') }}" method="post" accept-charset="UTF-8" enctype="multipart/form-data" style="display: inline;">--}}
+{{--                                @csrf--}}
+{{--                                <input type="text" placeholder="#id:" class="mb-3" @if(isset($id))value="{{$id}}"@endif name="id">--}}
+{{--                            </form>--}}
+{{--                            <form action="{{ route('id.cat') }}" method="post" accept-charset="UTF-8" enctype="multipart/form-data" style="display: inline;">--}}
+{{--                                @csrf--}}
+{{--                            <div class="form-group">--}}
+{{--                                <label for="exampleInputEmail1">Mahsulot toifasini tanlang tanlang</label>--}}
+{{--                                <select class="form-control form-control-sm" id="cat_id" onchange="catfilter(cat_id)"  name="cat_id">--}}
+{{--@if(isset($cat)) <option value="{{$cat->id}}">{{ $cat->name }}</option>@else<option value=""></option> @endif--}}
+{{--                                    @foreach($cats as $item)--}}
+{{--                                        @if(isset($cat))--}}
+{{--                                        @if($cat->id != $item->id)--}}
+{{--                                        <option value="{{$item->id}}">{{ $item->name }}</option>--}}
+{{--                                      @endif--}}
+{{--        @else--}}
+{{--            <option value="{{$item->id}}">{{ $item->name }}</option>--}}
+{{--        @endif--}}
+{{--                                    @endforeach--}}
+{{--                                </select>--}}
 
-                                <label for="exampleInputEmail1">Mahsulotning Hash toifasini tanlang tanlang</label>
-                                <select class="form-control form-control-sm" id="cat_id"   name="hash_id">
+{{--                                <label for="exampleInputEmail1">Mahsulotning Hash toifasini tanlang tanlang</label>--}}
+{{--                                <select class="form-control form-control-sm" id="cat_id"   name="hash_id">--}}
 {{--                                    <option></option>--}}
-                                    @if(isset($hash)) <option value="{{$cat->id}}">{{ $cat->name }}</option>@else<option value=""></option> @endif
-                                    @foreach($hashs as $item)
-                                        @if(isset($cat))
-                                            @if($cat->id != $item->id)
-                                                <option value="{{$item->id}}">{{ $item->name }}</option>
-                                            @endif
-                                        @else
-                                            <option value="{{$item->id}}">{{ $item->name }}</option>
-                                        @endif
-                                    @endforeach
-                                </select>
-                            </div>
-                                <button class="btn mt-2 w-100 mb-2" style="background: #4abb5a;color: #f1f1f1">Qidirish</button>
-                            </form>
+{{--                                    @if(isset($hash)) <option value="{{$cat->id}}">{{ $cat->name }}</option>@else<option value=""></option> @endif--}}
+{{--                                    @foreach($hashs as $item)--}}
+{{--                                        @if(isset($cat))--}}
+{{--                                            @if($cat->id != $item->id)--}}
+{{--                                                <option value="{{$item->id}}">{{ $item->name }}</option>--}}
+{{--                                            @endif--}}
+{{--                                        @else--}}
+{{--                                            <option value="{{$item->id}}">{{ $item->name }}</option>--}}
+{{--                                        @endif--}}
+{{--                                    @endforeach--}}
+{{--                                </select>--}}
+{{--                            </div>--}}
+{{--                                <button class="btn mt-2 w-100 mb-2" style="background: #4abb5a;color: #f1f1f1">Qidirish</button>--}}
+{{--                            </form>--}}
                             <table class="table table-borderless datatable">
                                 <thead>
                                 <tr>
@@ -359,8 +359,8 @@
     <!-- Vendor JS Files -->
 
 
-    <script src="{{asset('/js/core/jquery.3.2.1.min.js')}}"></script>
-    <script src="{{asset('/js/plugin/datatables/datatables.min.js')}}"></script>
+{{--    <script src="{{asset('/js/core/jquery.3.2.1.min.js')}}"></script>--}}
+{{--    <script src="{{asset('/js/plugin/datatables/datatables.min.js')}}"></script>--}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
 
@@ -411,36 +411,9 @@
                     }
                 });
         }
-        $(document).ready( function () {
-            $('#table').DataTable({
-                dom: 'Bfrtip',
-                "buttons": [
-                    {
-                        "extend": 'excel', "text":' Малумотларни excel форматда юклаб олиш',"className": 'btn btn-primary btn-xm'
-                    }
-                ],
-                "aLengthMenu": [200],
-            });
-            $('#exportButton').on('click', function() {
-                exportToExcel();
-            });
 
 
-            function exportToExcel() {
-                var wb = XLSX.utils.table_to_book(document.getElementById('table'), {sheet: 'Sheet JS'});
-                var wbout = XLSX.write(wb, {bookType:'xlsx',  type: 'binary'});
 
-                function s2ab(s) {
-                    var buf = new ArrayBuffer(s.length);
-                    var view = new Uint8Array(buf);
-                    for (var i=0; i<s.length; i++) view[i] = s.charCodeAt(i) & 0xFF;
-                    return buf;
-                }
-
-                saveAs(new Blob([s2ab(wbout)],{type:"application/octet-stream"}), 'data.xlsx');
-            }
-
-        } );
         var modal = document.getElementById("myModal");
 
         var btn = document.getElementById("myBtn");

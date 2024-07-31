@@ -26,6 +26,7 @@ class User extends Authenticatable
         'verify_code',
         'verify_expiration',
         'verify_code_status',
+        'shop_id'
     ];
 
     /**

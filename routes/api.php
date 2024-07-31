@@ -15,10 +15,29 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+
 Route::post('/check-sms/{phone}', [AuthController::class, 'checkSms'])->name('check_sms');
 Route::post('reg',[\App\Http\Controllers\Api\AuthController::class,'reg']);
 Route::post('/auth/login', [AuthController::class, 'loginUser']);
 Route::post('/auth/login/courier', [AuthController::class, 'loginCourier']);
+
+
+Route::middleware(['auth:sanctum'/*, 'abilities:check-status'*/])->group(function () {
+    Route::get('cat/list',[\App\Http\Controllers\Api\GeneralController::class,'category'] );
+    Route::post('product/search/',[\App\Http\Controllers\Api\GeneralController::class,'search'] );
+    Route::get('getHashesByHashId/{id}',[\App\Http\Controllers\Api\GeneralController::class,'getHashesByHashId'] );
+    Route::get('getProductsByHash/{id}',[\App\Http\Controllers\Api\GeneralController::class,'getProductsByHash'] );
+    Route::get('home/list',[\App\Http\Controllers\Api\GeneralController::class,'homelist'] );
+    Route::get('product/list',[\App\Http\Controllers\Api\GeneralController::class,'productlist'] );
+    Route::get('product/filter/{id}',[\App\Http\Controllers\Api\GeneralController::class,'productfilter'] );
+    Route::get('product/hash/filter/{id}',[\App\Http\Controllers\Api\GeneralController::class,'productfilter'] );
+    Route::post('order/story/{id}',[\App\Http\Controllers\Api\GeneralController::class,'orderstory'] );
+    Route::get('order/history/{id}',[\App\Http\Controllers\Api\GeneralController::class,'orderhistory'] );
+    Route::get('get/orders/',[\App\Http\Controllers\Api\CourierController::class,'getOrder'] );
+    Route::post('take/orders/{id}',[\App\Http\Controllers\Api\CourierController::class,'takeOrder'] );
+    Route::get('orders/history/{id}',[\App\Http\Controllers\Api\CourierController::class,'historyOrder'] );
+    Route::get('get/my/orders/{id}',[\App\Http\Controllers\Api\CourierController::class,'myOrder'] );
+    Route::post('start/order/{id}',[\App\Http\Controllers\Api\CourierController::class,'startOrder'] );
+    Route::post('finish/order/{id}',[\App\Http\Controllers\Api\CourierController::class,'finishOrder'] );
+    Route::get('/order/info/{id}',[\App\Http\Controllers\Api\CourierController::class,'orderInfo'] );
+});
