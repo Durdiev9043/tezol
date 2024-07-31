@@ -18,6 +18,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('supplier_id')->nullable();
+            $table->unsignedBigInteger('shop_id')->nullable();
             $table->integer('status');
             $table->double('lat')->nullable();
             $table->double('lang')->nullable();
@@ -29,6 +30,7 @@ return new class extends Migration
 
             $table->foreign('user_id')->on('users')->references('id');
             $table->foreign('supplier_id')->on('users')->references('id');
+            $table->foreign('shop_id')->on('shops')->references('id');
             $table->timestamps();
         });
     }

@@ -7,6 +7,7 @@ use App\Models\Category;
 use App\Models\Order;
 use App\Models\OrderProduct;
 use App\Models\Product;
+use App\Models\Shop;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -32,6 +33,7 @@ class GeneralController extends BaseController
             $data['miqdori']=$product->miqdori;
             $data['code']=$product->code;
             $data['type']=$product->type;
+            $data['shop_id']=$product->shop_id;
             if ($product->img) {
                 $data['img'][] = $product->img;
             }
@@ -96,6 +98,7 @@ class GeneralController extends BaseController
             $data['miqdori']=$product->miqdori;
             $data['code']=$product->code;
             $data['type']=$product->type;
+            $data['shop_id']=$product->shop_id;
             if ($product->img) {
                 $data['img'][] = $product->img;
             }
@@ -132,6 +135,7 @@ class GeneralController extends BaseController
             $data['miqdori']=$product->miqdori;
             $data['code']=$product->code;
             $data['type']=$product->type;
+            $data['shop_id']=$product->shop_id;
             if ($product->img) {
                 $data['img'][] = $product->img;
             }
@@ -177,6 +181,7 @@ class GeneralController extends BaseController
             $data['miqdori'] = $product->miqdori;
             $data['code'] = $product->code;
             $data['type'] = $product->type;
+            $data['shop_id']=$product->shop_id;
             if ($product->img) {
                 $data['img'][] = $product->img;
             }
@@ -219,6 +224,7 @@ class GeneralController extends BaseController
                 $pp['miqdori'] = $product->miqdori;
                 $pp['code'] = $product->code;
                 $pp['type'] = $product->type;
+                $pp['shop_id']=$product->shop_id;
                 if ($product->img) {
                     $pp['img'][] = $product->img;
                 }
@@ -255,6 +261,7 @@ class GeneralController extends BaseController
             'lat'=>$jsonData['lat'],
             'lang'=>$jsonData['lang'],
             'address_name'=>$jsonData['address_name'],
+            'shop_id'=>$jsonData['shop_id'],
         ])->id;
 //        $products=json_decode($request->products);
         foreach ($jsonData['products'] as $product){
@@ -299,6 +306,18 @@ class GeneralController extends BaseController
         }
 
         return $this->sendSuccess($res,'Buyurtmalar tarixi');
+    }
+    public function shop(){
+        $shops=Shop::all();
+        return $this->sendSuccess($shops,'dokonlar');
+
+    }
+    public function shopProduct($id)
+    {
+        $pp=Product::where('shop_id',$id)->get();
+        return $this->sendSuccess($pp,'dokonlar');
+
+
     }
 
 
