@@ -225,8 +225,8 @@
 
                                         <div class="form-group">
                                             <label for="exampleInputEmail1">Surati:</label>
-                                            <input type=file name="img" oninput="pic.src=window.URL.createObjectURL(this.files[0])">
-                                            <img id="pic"  width="100px"/>
+{{--                                            <input type=file name="img" oninput="pic.src=window.URL.createObjectURL(this.files[0])">--}}
+{{--                                            <img id="pic"  width="100px"/>--}}
                                             <input type="file" class="form-control" id="exampleInputEmail1" name="img" aria-describedby="emailHelp" placeholder="Soni">
 
                                         </div>
