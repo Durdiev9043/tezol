@@ -70,8 +70,9 @@ return view('admin.shop.view',['users'=>$users,'shop'=>$shop]);
     }
 
 
-    public function destroy($id)
+    public function destroy(Shop $shop)
     {
-        //
+        $shop->delete();
+        return redirect()->back();
     }
 }
